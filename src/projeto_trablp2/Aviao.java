@@ -2,7 +2,7 @@
 package projeto_trablp2;
 public class Aviao{
 	private String modelo;
-	private Assentos primClasse[], economico[];
+	private Assento primClasse[], economico[];
 	private int horario;
 
 	public Aviao(String m, int qnt, int h){
@@ -11,12 +11,10 @@ public class Aviao{
 		horario = h;
 	}
 	public void defineAssentos(int qnt){
-		int num_ec;
-		int num_pC;
-		num_pC = (qnt*30)/100;
-		num_ec = (qnt*70)/100;
-		primClasse[] = new Assentos(num_pC);
-		economico[] = new Assentos(num_ec);
+		int num_ec = (qnt*70)/100;;
+		int num_pC = (qnt*30)/100;
+		primClasse[] = new Assento(num_pC);
+		economico[] = new Assento(num_ec);
 	}
 	public String getModelo(){
 		return modelo;
@@ -42,8 +40,12 @@ public class Aviao{
 		modelo = m;
 	}
 
-	public void setAssento(int i, Assento a){
-		assentos[i] = s;
+	public void setAssentoEc(int i, Assento e){
+		economico[i] = e;
+	}
+
+	public void setAssentoPC(int i, Assento pc){
+		primClasse[i] = pc;
 	}
 
 	public void setHorario(int h){
