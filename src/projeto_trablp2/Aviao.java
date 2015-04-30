@@ -2,21 +2,36 @@
 package projeto_trablp2;
 public class Aviao{
 	private String modelo;
-	private Assentos assentos[];
+	private Assentos primClasse[], economico[];
 	private int horario;
 
 	public Aviao(String m, int qnt, int h){
 		modelo = m;
-		assentos[] = new Assentos(qnt);
+		this.defineAssentos(qnt);
 		horario = h;
 	}
-
+	public void defineAssentos(int qnt){
+		int num_ec;
+		int num_pC;
+		num_pC = (qnt*30)/100;
+		num_ec = (qnt*70)/100;
+		primClasse[] = new Assentos(num_pC);
+		economico[] = new Assentos(num_ec);
+	}
 	public String getModelo(){
 		return modelo;
 	}
 
-	public Assentos getAssento(int i){
-		return assentos[i];
+	public int getQntAssentPC(){
+		return (primClasse.length);
+	}
+
+	public int getQntAssentEc(){
+		return (economico.length);
+	}
+
+	public int getTotalAssentos(){
+		return (economico.lenght+primClasse.length);
 	}
 
 	public int getHorario(){
