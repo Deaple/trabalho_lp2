@@ -25,7 +25,6 @@ public class Cliente {
         System.out.println("Digite o telefone de contato:");
         tel=in.nextDouble();
         System.out.println("Digite o destino:");
-        destino=in.next();
 }
     public Cliente(String nome, double rg, double cpf, int datanasc, double tel, String destino){
         this.nome=nome;
