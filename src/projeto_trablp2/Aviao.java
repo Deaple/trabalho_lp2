@@ -1,14 +1,20 @@
 //nome do modelo e quantidade de assentos, horario de voo(cliente escolhe seu horario), destino   
 package projeto_trablp2;
+import java.util.Scanner;
 public class Aviao{
-	private String modelo;
+	private String modelo, destino;
 	private Assento primClasse[], economico[];
 	private int horario;
 
-	public Aviao(String m, int qnt, int h){
+	public Aviao(String m, String d, int qnt, int h){
 		modelo = m;
+		destino = d;
 		this.defineAssentos(qnt);
 		horario = h;
+	}
+
+	public int getTotalAssentPrimClass(){
+		return 
 	}
 	public void defineAssentos(int qnt){
 		int num_ec = (qnt*70)/100;;

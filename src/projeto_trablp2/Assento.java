@@ -10,4 +10,12 @@ public class Assento {
     public Assento(){
         status=false;
     }
+
+    public void ocupaAssento(boolean status){
+    	this.status = status;
+    }
+
+    public boolean getStatus(){
+    	return status;
+    }
 }
