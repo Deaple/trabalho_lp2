@@ -21,7 +21,6 @@ public class Aviao{
 		this.defineAssentos(entrada.nextInt());
 		System.out.println("Horario de voo: ");
 		horario = entrada.nextInt();
-		entrada.nextLine();
 	}
 
 	public Aviao(String m, String d, int qnt, int h){
@@ -33,6 +32,14 @@ public class Aviao{
 		num_ass_pc = 0;
 	}
 
+	public int getTotalAssentPrimClass(){
+		return num_ass_pc;
+	}
+
+	public int getTotalAssentEconomico(){
+		return num_ass_ec;
+	}
+
 	public void defineAssentos(int qnt){
 		//define 70% da quantidadde para assentos economicos e 30% para os de primeira classe
 		int num_ec = (qnt*70)/100;;
@@ -40,44 +47,52 @@ public class Aviao{
 		primClasse = new Assento[num_pC];
 		economico = new Assento[num_ec];
 	}
-
-	public void ocupaAssEc(){
-		if(num_ass_ec<=economico.length-1){
-			economico[num_ass_ec] = new Assento(true);
-			num_ass_ec++;
-		} else {
-			System.out.println("Nao ha mais assentos economicos");
-			return;
-		}
+	public void ocupaAssEc(int i){
+		economico[i] = new Assento(true);
+		num_ass_ec++;
 	}
 
-	public void ocupaAssPC(){
-		if(num_ass_pc<=primClasse.length-1){
-			primClasse[num_ass_pc] = new Assento(true);
-			num_ass_pc++;
-		} else {
-			System.out.println("Nao ha mais assentos de primeira classe");
-			return;
-		}	
-	}
-
-	public int getEconomicosOcp(){
-		return num_ass_ec;
-	}
-
-	public int getPrimClassOcp(){
-		return num_ass_pc;
+	public void ocupaAssPC(int i){
+		primClasse[i] = new Assento(true);
+		num_ass_pc++;
 	}
 	
 	public String getModelo(){
 		return modelo;
 	}
 
-	public String getDestino(){
-		return destino;
+	public int getQntAssentPC(){
+		return (primClasse.length);
+	}
+
+	public int getQntAssentEc(){
+		return (economico.length);
+	}
+
+	public int getTotalAssentos(){
+		return (economico.length+primClasse.length);
 	}
 
 	public int getHorario(){
 		return horario;
+	}
+
+	public void setModelo(String m){
+		modelo = m;
+	}
+
+	public void setAssentoEc(int i, Assento e){
+		economico[i] = e;
+	}
+
+	public void setAssentoPC(int i, Assento pc){
+		primClasse[i] = pc;
+	}
+
+	public void setHorario(int h){
+		horario = h;
+	}
+	public String getDestino(){
+		return destino;
 	}
 }

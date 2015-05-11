@@ -8,12 +8,10 @@ public class Cliente {
     private double rg;
     private double cpf;
     private int datanasc;
-    private int horario;
     private double tel;
     private String destino;
-    private String assento;
-
-    public Cliente(int horario, String destino, String assento){
+    
+    public Cliente(){
         Scanner in=new Scanner(System.in);
         System.out.println("****CADASTRO DE CLIENTES****");
         System.out.println("Digite o nome:");
@@ -26,12 +24,7 @@ public class Cliente {
         datanasc=in.nextInt();
         System.out.println("Digite o telefone de contato:");
         tel=in.nextDouble();
-        this.horario = horario;
-        this.destino = destino;
-        this.assento = assento;
-        in.nextLine();
-        //System.out.println("Digite o destino:");
-        //Destino ira ser selecionado no main, pois só cadastraremos o cliente se ele tiver um destino definido.
+        System.out.println("Digite o destino:");
 }
     public Cliente(String nome, double rg, double cpf, int datanasc, double tel, String destino){
         this.nome=nome;
