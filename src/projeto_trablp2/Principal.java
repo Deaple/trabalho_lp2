@@ -4,10 +4,12 @@ public class Principal {
 	public static void main(String[] args) {
 		Scanner entrada = new Scanner(System.in);
 		int resp = 0, horario;
+		final int tam_avioes = 2;
+		final int tam_clientes = 5;
 		String destino, assento;
 		//vetor apenas para teste
-		Aviao[] avioes = new Aviao[5];
-		Cliente[] clientes = new Cliente[5];
+		Aviao[] avioes = new Aviao[tam_avioes];
+		Cliente[] clientes = new Cliente[tam_clientes];
 		int cont_av = 0, cont_c = 0;
 
 		while(resp!=5){
@@ -26,7 +28,7 @@ public class Principal {
 				case 2:
 					if(cont_av==0)
 						System.out.println("Nao ha avioes cadastados! Impossivel cadastrar cliente!");
-					else{
+					else if(cont_c<tam_clientes){
 						entrada.nextLine();
 						System.out.println("Digite o horario:");
 						horario = entrada.nextInt();
@@ -36,14 +38,22 @@ public class Principal {
 						System.out.println("Digite o tipo de assento:");
 						assento = entrada.nextLine();
 						for(int i=0;i<cont_av;i++){
-							if(destino.equals(avioes[i].getDestino())){
-								System.out.println("ok");	
-								break;
-							} else 
-								if(i==cont_av-1)
+							if(destino.equals(avioes[i].getDestino())){ //verifica se há o destino requisitado
+								clientes[cont_c] = new Cliente(destino);
+								if(assento.equals("economico"))
+									avioes[i].ocupaAssEc(); //ocupa assento economico
+								else
+									avioes[i].ocupaAssPC(); //ocupa assento primeira classe
+								System.out.println("Seu assento foi registrado com sucesso!");
+								cont_c++; 
+								break; //sai do loop ao encontrar o destino
+							} 
+							else if(i==cont_av-1)
 									System.out.println("Destino indisponivel");	
-						}		
+						}
 					}
+					else 
+						System.out.println("Capacidade maxima de clientes atingida!");
 				break;
 
 				case 3:
@@ -63,7 +73,7 @@ public class Principal {
 						System.out.println("Nao ha clientes cadastrados!");
 					else	
 						for(int i=0;i<cont_c;i++){
-							System.out.printf("Nome: %s \nRG: %d\n Destino: %s\n\n",
+							System.out.printf("Nome: %s \nRG: %d\nDestino: %s\n\n",
 								clientes[i].getNome(),clientes[i].getRg(),clientes[i].getDestino());
 						}
 				break;

@@ -43,7 +43,7 @@ public class Aviao{
 
 	public void ocupaAssEc(){
 		if(num_ass_ec<=economico.length-1){
-			economico[num_ass_ec++];
+			economico[num_ass_ec++] = true; //ocupa um assento
 		} else {
 			System.out.println("Nao ha mais assentos economicos");
 			return;
@@ -52,7 +52,7 @@ public class Aviao{
 
 	public void ocupaAssPC(){
 		if(num_ass_pc<=primClasse.length-1){
-			primClasse[num_ass_pc++];
+			primClasse[num_ass_pc++] = true; //ocupa um assento
 		} else {
 			System.out.println("Nao ha mais assentos de primeira classe");
 			return;

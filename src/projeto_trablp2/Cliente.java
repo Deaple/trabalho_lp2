@@ -5,29 +5,30 @@ import java.util.Scanner;
  */
 public class Cliente {
     private String nome;
-    private double rg;
-    private double cpf;
+    private int rg;
+    private int cpf;
     private int datanasc;
-    private double tel;
+    private int tel;
     private String destino;
     
-    public Cliente(){
+    public Cliente(String destino){
         Scanner in=new Scanner(System.in);
         System.out.println("****CADASTRO DE CLIENTES****");
         System.out.println("Digite o nome:");
         nome=in.next();
         System.out.println("Digite o RG:");
-        rg=in.nextDouble();
+        rg=in.nextInt();
         System.out.println("Digite o CPF:");
-        cpf=in.nextDouble();
+        cpf=in.nextInt();
         System.out.println("Digite a data de nascimento(dia/mes/ano):");
         datanasc=in.nextInt();
         System.out.println("Digite o telefone de contato:");
-        tel=in.nextDouble();
-        System.out.println("Digite o destino:");
+        tel=in.nextInt();
+        this.destino = destino;
+        //System.out.println("Digite o destino:");
     }
-    
-    public Cliente(String nome, double rg, double cpf, int datanasc, double tel, String destino){
+
+    public Cliente(String nome, int rg, int cpf, int datanasc, int tel, String destino){
         this.nome=nome;
         this.rg=rg;
         this.cpf=cpf;
@@ -41,7 +42,7 @@ public class Cliente {
     public void setDestino(String destino) {
         this.destino = destino;
     }
-    public double getTel() {
+    public int getTel() {
         return tel;
     }
     public String getDestino() {
@@ -50,10 +51,10 @@ public class Cliente {
     public String getNome() {
         return nome;
     }
-    public double getRg() {
+    public int getRg() {
         return rg;
     }
-    public double getCpf() {
+    public int getCpf() {
         return cpf;
     }
     public int getDatanasc() {
