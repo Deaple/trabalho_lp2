@@ -61,8 +61,8 @@ public class Principal {
 						System.out.println("Nao ha avioes cadastrados!");
 					else{
 						for (int i=0;i<cont_av;i++ ) {
-						System.out.printf("Modelo: %s\nDestino: %s\nHorario: %d\n",
-							avioes[i].getModelo(),avioes[i].getDestino(),avioes[i].getHorario());
+						System.out.printf("Modelo: %s\nDestino: %s\nHorario: %d\nAssentos Eco: %d\nAssentos PC: %d\n",
+							avioes[i].getModelo(),avioes[i].getDestino(),avioes[i].getHorario(),avioes[i].getEconomicosOcp(), avioes[i].getPrimClassOcp());
 						}
 						System.out.println();
 					}	
