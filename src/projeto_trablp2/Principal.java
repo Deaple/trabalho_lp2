@@ -21,8 +21,12 @@ public class Principal {
 			resp = entrada.nextInt();
 			switch(resp){
 				case 1:
-					avioes[cont_av] = new Aviao();
-					cont_av++; 
+					if(cont_av<tam_avioes){
+						avioes[cont_av] = new Aviao();
+						cont_av++; 
+					}
+					else
+						System.out.println("Limite maximo de avioes cadastrados");	
 				break;
 
 				case 2:
@@ -60,8 +64,9 @@ public class Principal {
 					if(cont_av==0)
 						System.out.println("Nao ha avioes cadastrados!");
 					else{
+						System.out.println("\n\nAvioes: ");
 						for (int i=0;i<cont_av;i++ ) {
-						System.out.printf("Modelo: %s\nDestino: %s\nHorario: %d\nAssentos Eco: %d\nAssentos PC: %d\n",
+						System.out.printf("Modelo: %s\nDestino: %s\nHorario: %d\nAssentos Eco: %d\nAssentos PC: %d\n\n",
 							avioes[i].getModelo(),avioes[i].getDestino(),avioes[i].getHorario(),avioes[i].getEconomicosOcp(), avioes[i].getPrimClassOcp());
 						}
 						System.out.println();
@@ -71,11 +76,13 @@ public class Principal {
 				case 4:
 					if(cont_c==0)
 						System.out.println("Nao ha clientes cadastrados!");
-					else	
+					else{
+						System.out.println("\n\nClientes: ");	
 						for(int i=0;i<cont_c;i++){
-							System.out.printf("Nome: %s \nRG: %d\nDestino: %s\n\n",
-								clientes[i].getNome(),clientes[i].getRg(),clientes[i].getDestino());
+							System.out.printf("Nome: %s \nRG: %s\nCPF: %s\nDestino: %s\nTelefone: %d\n\n",
+								clientes[i].getNome(),clientes[i].getRg(),clientes[i].getCpf(),clientes[i].getDestino(),clientes[i].getTel());
 						}
+					}	
 				break;
 
 				case 5: System.exit(0);
