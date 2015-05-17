@@ -6,7 +6,7 @@ public class Aviao{
 	private String destino;
 	private boolean[] primClasse;
 	private boolean[] economico;
-	private int horario;
+	private String horario;
 	private int num_ass_ec;
 	private int	num_ass_pc;
 
@@ -14,17 +14,17 @@ public class Aviao{
 		System.out.println("****CADASTRO DE AVIAO****");
 		Scanner entrada = new Scanner(System.in);
 		System.out.println("Digite o modelo: ");
-		modelo = entrada.nextLine();
+		modelo = entrada.next();
 		System.out.println("Digite o destino: ");
-		destino = entrada.nextLine();
+		destino = entrada.next();
 		System.out.println("Quantidade de assentos: ");
 		this.defineAssentos(entrada.nextInt());
 		System.out.println("Horario de voo: ");
-		horario = entrada.nextInt();
+		horario = entrada.next();
 		entrada.nextLine();
 	}
 
-	public Aviao(String m, String d, int qnt, int h){
+	public Aviao(String m, String d, int qnt, String h){
 		modelo = m;
 		destino = d;
 		this.defineAssentos(qnt);
@@ -42,23 +42,26 @@ public class Aviao{
 	}
 
 	public void ocupaAssEc(){
-		if(num_ass_ec<=economico.length-1){
-			economico[num_ass_ec++] = true; //ocupa um assento
-		} else {
-			System.out.println("Nao ha mais assentos economicos");
-			return;
-		}
+		economico[num_ass_ec++] = true; //ocupa um assento
 	}
 
 	public void ocupaAssPC(){
-		if(num_ass_pc<=primClasse.length-1){
-			primClasse[num_ass_pc++] = true; //ocupa um assento
-		} else {
-			System.out.println("Nao ha mais assentos de primeira classe");
-			return;
-		}	
+		primClasse[num_ass_pc++] = true; //ocupa um assento
 	}
 
+	public boolean assentoDisponivel(String tipo){ //verifica se ha assento do tipo solicitado disponivel
+		boolean resp = false;
+		System.out.println("Total economico: "+economico.length+" Total Primeira Classe: "+primClasse.length+"\nOcupados Economico: "+num_ass_ec+"\nOcupados Prim Classe: "+num_ass_pc);
+		if((tipo.equals("economico"))&&(economico.length!=num_ass_ec))
+				resp = true;
+		else if((tipo.equals("primeira classe"))&&(primClasse.length!=num_ass_pc))
+				resp = true;
+		return resp;	
+	}
+
+	public int getAssentos(){
+		return (primClasse.length+economico.length);
+	}
 	public int getEconomicosOcp(){
 		return num_ass_ec;
 	}
@@ -75,7 +78,7 @@ public class Aviao{
 		return destino;
 	}
 
-	public int getHorario(){
+	public String getHorario(){
 		return horario;
 	}
 }

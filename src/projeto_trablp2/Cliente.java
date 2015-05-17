@@ -10,8 +10,10 @@ public class Cliente {
     private int datanasc;
     private int tel;
     private String destino;
+    private String horario;
+    private String tipo_assento;
     
-    public Cliente(String destino){
+    public Cliente(String destino, String horario, String tipo_assento){
         Scanner in=new Scanner(System.in);
         System.out.println("****CADASTRO DE CLIENTES****");
         System.out.println("Digite o nome:");
@@ -25,16 +27,20 @@ public class Cliente {
         System.out.println("Digite o telefone de contato:");
         tel=in.nextInt();
         this.destino = destino;
+        this.horario = horario;
+        this.tipo_assento = tipo_assento;
         //System.out.println("Digite o destino:");
     }
 
-    public Cliente(String nome, String rg, String cpf, int datanasc, int tel, String destino){
+    public Cliente(String nome, String rg, String cpf, int datanasc, int tel, String destino, String horario, String tipo_assento){
         this.nome=nome;
         this.rg=rg;
         this.cpf=cpf;
         this.datanasc=datanasc;
         this.tel=tel;
         this.destino=destino;
+        this.horario = horario;
+        this.tipo_assento = tipo_assento;
     }
     public void setTel(int tel) {
         this.tel = tel;
@@ -59,5 +65,12 @@ public class Cliente {
     }
     public int getDatanasc() {
         return datanasc;
+    }
+
+    public String getTipoAssent(){
+        return tipo_assento;
+    }
+    public String getHorario(){
+        return horario;
     }
 }
